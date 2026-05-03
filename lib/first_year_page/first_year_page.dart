@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:studyvault/gridcart.dart';
+import 'package:studyvault/contants/gridcart.dart';
+import 'package:studyvault/first_year_page/page_notes_section.dart';
 import 'package:studyvault/landing_page.dart';
 import 'package:studyvault/loadingscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class FirstYearPage extends StatefulWidget {
   const FirstYearPage({super.key});
@@ -60,21 +60,20 @@ class _FirstYearPageState extends State<FirstYearPage> {
               ],
             ),
           ),
-        
         ),
-       actions: [
-  IconButton(
-    icon: const Icon(Icons.arrow_forward),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => const LandingPage(), // your target page
-        ),
-      );
-    },
-  ),
-],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.arrow_forward),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const LandingPage(), // your target page
+                ),
+              );
+            },
+          ),
+        ],
       ),
 
       body: Column(
@@ -102,6 +101,25 @@ class _FirstYearPageState extends State<FirstYearPage> {
                 '4th sem CSE',
                 () => openWebsite(
                   "https://drive.google.com/drive/folders/1f2lBjqn7brpkfeuAxjwun7FUtPlw5Plu",
+                ),
+              ),
+
+              // _buildCard(
+              //   '📋',
+              //   'Notes',
+              //   '2nd sem CSE',
+              //   () => openWebsite(
+              //     "https://drive.google.com/file/d/1-zYKMr1zI16XI9FfQYPo__u5trd1PQM7/view",
+              //   ),
+              // ),
+
+              _buildCard(
+                '📋',
+                'Notes',
+                '2nd sem CSE',
+                ()=> Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const NotesSection()),
                 ),
               ),
 

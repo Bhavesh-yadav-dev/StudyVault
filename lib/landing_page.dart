@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:studyvault/chatbot.dart';
+import 'package:studyvault/AI_helper/chatbot.dart';
 import 'package:studyvault/first_year_page/first_year_page.dart';
-import 'package:studyvault/gridcart.dart';
+import 'package:studyvault/contants/gridcart.dart';
 import 'package:studyvault/loadingscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:gpt_markdown/gpt_markdown.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:studyvault/chatmsg.dart';
-import 'package:studyvault/constants.dart';
+import 'package:studyvault/AI_helper/chatmsg.dart';
+import 'package:studyvault/contants/constants.dart';
 
 
 class Chatbot extends StatefulWidget {
