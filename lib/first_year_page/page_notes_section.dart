@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
+import 'package:studyvault/contants/notes_conatiner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NotesSection extends StatefulWidget {
   const NotesSection({super.key});
@@ -9,6 +11,17 @@ class NotesSection extends StatefulWidget {
 }
 
 class _NotesSectionState extends State<NotesSection> {
+  Future<void> openWebsite(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        debugPrint("Could not launch $url");
+      }
+    } catch (e) {
+      debugPrint("Error: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,31 +59,75 @@ class _NotesSectionState extends State<NotesSection> {
             ),
           ),
         ),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.arrow_forward),
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute(
-        //           builder: (_) => const LandingPage(), // your target page
-        //         ),
-        //       );
-        //     },
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.go('initialpage');
+            },
+            icon: Icon((Icons.arrow_forward_ios)),
+          ),
+
+        ],
       ),
 
-      body: Expanded(
+      body: SafeArea(
         child: GridView.count(
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           childAspectRatio: 1.3,
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-        
+          padding: EdgeInsets.all(20),
+
           children: [
-            ElevatedButton(onPressed: () {}, child: Text("M2")),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     openWebsite("https://drive.google.com/file/d/1-zYKMr1zI16XI9FfQYPo__u5trd1PQM7/view");
+            //   },
+            //   child: Text("M2"),
+            // ),
+            NotesConatiner(
+              subjectname: "M2",
+              ontap: () {
+                openWebsite(
+                  "https://drive.google.com/file/d/1-zYKMr1zI16XI9FfQYPo__u5trd1PQM7/view",
+                );
+              },
+            ),
+            NotesConatiner(subjectname: "Chemistry", ontap: () {}),
+            NotesConatiner(
+              subjectname: "physics",
+              ontap: () {
+                openWebsite(
+                  "https://drive.google.com/drive/u/2/folders/1q3gMKuSH5aQfJaqEw8Yc1J3Ch73Ef8tJ",
+                );
+              },
+            ),
+            NotesConatiner(
+              subjectname: "M1",
+              ontap: () {
+                openWebsite("");
+              },
+            ),
+            NotesConatiner(
+              subjectname: "C programming",
+              ontap: () {
+                openWebsite(
+                  "https://drive.google.com/drive/u/2/folders/1eGBVRyhZxCgDokkUV5RPboM8MQEMCh91",
+                );
+              },
+            ),
+            NotesConatiner(subjectname: "Python", ontap: () {}),
+            NotesConatiner(subjectname: "Cyber law & Ethics", ontap: () {}),
+            NotesConatiner(
+              subjectname: "Basic Electrial Engg",
+              ontap: () {
+                openWebsite(
+                  "https://drive.google.com/drive/u/2/folders/1KsZpIq9Aruo-RoWg-YnLPF-WOE8V3h8I",
+                );
+              },
+            ),
+            NotesConatiner(subjectname: "FOC", ontap: () {}),
+            NotesConatiner(subjectname: "English", ontap: () {}),
           ],
         ),
       ),

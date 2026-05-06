@@ -1,5 +1,5 @@
 //Api Key  
-  String apikey = "AIzaSyCc6_KLuV4Rcr2OnUPX9ISbD08o-9fQTus";
+  String apikey = "";
     
   
 //prompt
